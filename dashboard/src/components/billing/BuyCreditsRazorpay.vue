@@ -124,7 +124,7 @@ function processOrder(data) {
 		key: data.key_id,
 		order_id: data.order_id,
 		name: "Sowaan Cloud",
-		image: "/assets/press/images/sowaan-cloud-logo.jpg",
+		image: "/assets/press/images/sowaan-cloud-logo.png",
 		prefill: { email: team.doc?.user },
 		handler: handlePaymentSuccess,
 		theme: { color: "#171717" },

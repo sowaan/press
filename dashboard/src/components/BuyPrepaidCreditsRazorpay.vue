@@ -113,7 +113,7 @@ export default {
 				key: data.key_id,
 				order_id: data.order_id,
 				name: "Sowaan Cloud",
-				image: "/assets/press/images/sowaan-cloud-logo.jpg",
+				image: "/assets/press/images/sowaan-cloud-logo.png",
 				prefill: {
 					email: this.$team.doc.user,
 				},

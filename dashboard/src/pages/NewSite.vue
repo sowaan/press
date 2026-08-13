@@ -290,7 +290,7 @@
 						<span class="ml-4">
 							<strong>Support</strong>
 							covers only issues of Frappe apps and not functional queries. You
-							can raise a support ticket for Frappe Cloud issues for all plans.
+							can raise a support ticket for Sowaan Cloud issues for all plans.
 						</span>
 					</div>
 				</div>

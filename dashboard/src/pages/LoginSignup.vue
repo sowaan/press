@@ -910,9 +910,9 @@ export default {
 			} else if (this.otpRequested) {
 				return 'Verify your email address';
 			} else if (this.isLogin) {
-				return 'Log in to your Frappe Cloud account';
+				return 'Log in to your Sowaan Cloud account';
 			}
-			return 'Signup to your Frappe Cloud account';
+			return 'Signup to your Sowaan Cloud account';
 		},
 		subtitle() {
 			if (this.hasForgotPassword) {

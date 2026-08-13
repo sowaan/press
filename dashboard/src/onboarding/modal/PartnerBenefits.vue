@@ -19,7 +19,7 @@ const benefits = [
 	{
 		title: 'Partner discounts',
 		description:
-			'Get discounts on Frappe Cloud payments as a Gold, Silver & Bronze tier partner.',
+			'Get discounts on Sowaan Cloud payments as a Gold, Silver & Bronze tier partner.',
 		icon: MoneyIcon,
 	},
 	{

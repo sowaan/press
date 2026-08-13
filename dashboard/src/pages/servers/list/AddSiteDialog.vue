@@ -168,7 +168,7 @@ const submitForm = () => {
 
 					<p class="text-ink-gray-5">
 						Support covers only issues of Frappe apps and not functional
-						queries. You can raise a support ticket for Frappe Cloud issues
+						queries. You can raise a support ticket for Sowaan Cloud issues
 						anytime.
 					</p>
 				</div>

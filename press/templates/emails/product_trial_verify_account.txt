@@ -13,4 +13,4 @@ Verification Link: {{ link }}
 
 Team Frappe
 
-This email was sent by Frappe Cloud
+This email was sent by Sowaan Cloud

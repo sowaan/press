@@ -15,7 +15,7 @@ const resources = [
 		link: 'https://docs.frappe.io/school/partner-certification',
 	},
 	{
-		title: 'Getting started with Frappe Cloud',
+		title: 'Getting started with Sowaan Cloud',
 		link: 'https://frappe.io/cloud',
 	},
 	{

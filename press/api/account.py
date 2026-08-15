@@ -184,10 +184,10 @@ def send_otp_mail(email: str, otp: str, for_login: bool = True):
 
 	if for_login:
 		template = "login_otp"
-		subject = f"{otp} - OTP for Frappe Cloud Login"
+		subject = f"{otp} - OTP for Sowaan Cloud Login"
 	else:
 		template = "2fa_recovery_codes_otp"
-		subject = f"{otp} - OTP to view 2FA recovery codes for Frappe Cloud"
+		subject = f"{otp} - OTP to view 2FA recovery codes for Sowaan Cloud"
 
 	frappe.sendmail(
 		recipients=email,
@@ -351,7 +351,7 @@ def send_login_link(email):
 		print()
 
 	frappe.sendmail(
-		subject="Login to Frappe Cloud",
+		subject="Login to Sowaan Cloud",
 		recipients=email,
 		template="one_time_login_link",
 		args={"link": link, "minutes": minutes},
@@ -1259,7 +1259,7 @@ def get_2fa_qr_code_url():
 		).insert()
 
 	return pyotp.totp.TOTP(user_totp_secret).provisioning_uri(
-		name=frappe.session.user, issuer_name="Frappe Cloud"
+		name=frappe.session.user, issuer_name="Sowaan Cloud"
 	)
 
 

@@ -217,7 +217,7 @@ class AccountRequest(Document):
 			print()
 			return
 
-		subject = f"{otp} - OTP for Frappe Cloud Account Verification"
+		subject = f"{otp} - OTP for Sowaan Cloud Account Verification"
 		args = {}
 		sender = ""
 		inline_images = []
@@ -225,7 +225,7 @@ class AccountRequest(Document):
 			"Marketplace App", self.saas_app, "custom_verify_template"
 		)
 		if self.is_saas_signup() or custom_template:
-			subject = "Verify your email for Frappe"
+			subject = "Verify your email for Sowaan Cloud"
 			template = "saas_verify_account"
 			# If product trial(new saas flow), get the product trial details
 
@@ -264,7 +264,7 @@ class AccountRequest(Document):
 		else:
 			template = "verify_account"
 			if self.invited_by:
-				subject = f"You are invited by {self.invited_by} to join Frappe Cloud"
+				subject = f"You are invited by {self.invited_by} to join Sowaan Cloud"
 				template = "invite_team_member"
 
 		args.update(
@@ -280,7 +280,7 @@ class AccountRequest(Document):
 		if not args.get("image_path"):
 			args.update(
 				{
-					"image_path": "https://github.com/frappe/gameplan/assets/9355208/447035d0-0686-41d2-910a-a3d21928ab94"
+					"image_path": "https://admin.sowaancloud.com/assets/press/images/sowaan-cloud-logo.png"
 				}
 			)
 		# Telemetry: Verification Email Sent

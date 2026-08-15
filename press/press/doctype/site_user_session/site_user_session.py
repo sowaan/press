@@ -42,13 +42,13 @@ class SiteUserSession(Document):
 			print()
 			return
 
-		subject = f"{self.otp} - OTP for Frappe Cloud Site Login"
+		subject = f"{self.otp} - OTP for Sowaan Cloud Site Login"
 		args = {}
 
 		args.update(
 			{
 				"otp": self.otp,
-				"image_path": "https://github.com/frappe/gameplan/assets/9355208/447035d0-0686-41d2-910a-a3d21928ab94",
+				"image_path": "https://admin.sowaancloud.com/assets/press/images/sowaan-cloud-logo.png",
 			}
 		)
 

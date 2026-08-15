@@ -685,7 +685,7 @@ Likely due to insufficient balance or incorrect credentials""",
 		<p>Dear User,</p>
 		<p>You are receiving this mail as the storage has been filled up on your server: <strong>{self.resource}</strong> and you have <a href="https://docs.frappe.io/cloud/storage-addons#steps-to-disable-auto-increase-storage">automatic addition</a> of storage disabled.</p>
 		<p>Please enable automatic addition of storage or <a href="https://docs.frappe.io/cloud/storage-addons#steps-to-add-storage-manually">add more storage manually</a> to resolve the issue.</p>
-		<p>Best regards,<br/>Frappe Cloud Team</p>
+		<p>Best regards,<br/>Sowaan Cloud Team</p>
 		"""
 		self.send_mail(subject, message)
 

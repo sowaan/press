@@ -55,10 +55,10 @@ def suspend_sites_and_send_email(team):
 		email = team.user
 		frappe.sendmail(
 			recipients=email,
-			subject="Your sites have been suspended on Frappe Cloud",
+			subject="Your sites have been suspended on Sowaan Cloud",
 			template="suspended_sites",
 			args={
-				"subject": "Your sites have been suspended on Frappe Cloud",
+				"subject": "Your sites have been suspended on Sowaan Cloud",
 				"sites": sites,
 			},
 		)

@@ -36,11 +36,6 @@ function dismissTrialBannerForToday() {
 	localStorage.setItem(getTrialBannerDismissKey(), new Date().toDateString());
 }
 
-function getFrappeMajorVersion() {
-	const version = frappe.boot.versions && frappe.boot.versions.frappe;
-	return version ? parseInt(version.split('.')[0], 10) : 0;
-}
-
 function generateTrialBanner() {
 	const trial_end_string =
 		trial_end_days > 1 ? `${trial_end_days} days` : `${trial_end_days} day`;
@@ -166,23 +161,9 @@ $(document).ready(function () {
 		trial_end_days > 0 &&
 		!isTrialBannerDismissedToday()
 	) {
-		if (getFrappeMajorVersion() >= 16) {
-			// v16+ home page renders the module icon grid separately and fires
-			// a "desktop_screen" event once `.icons-container` is in the DOM —
-			// anchor there instead of the generic layout section (matches FC).
-			$(document).on('desktop_screen', function () {
-				if ($('.trial-banner').length) return;
-				const $container = $('.icons-container').first();
-				if (!$container.length) return;
-				const $banner = generateTrialBanner();
-				bindTrialBannerEvents($banner);
-				$container.before($banner);
-			});
-		} else {
-			const $banner = generateTrialBanner();
-			bindTrialBannerEvents($banner);
-			$('.layout-main-section').before($banner);
-		}
+		const $banner = generateTrialBanner();
+		bindTrialBannerEvents($banner);
+		$('.layout-main-section').before($banner);
 	}
 	if (frappe.boot.setup_complete && frappe.user.has_role('System Manager')) {
 		add_frappe_cloud_dashboard_link();

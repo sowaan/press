@@ -80,7 +80,7 @@ let $floatingBar = $(`
 `);
 
 $(document).ready(function () {
-	if (frappe.boot.setup_complete === 1) {
+	if (frappe.boot.setup_complete) {
 		if (
 			!frappe.is_mobile() &&
 			frappe.boot.subscription_conf.status !== 'Subscribed' &&

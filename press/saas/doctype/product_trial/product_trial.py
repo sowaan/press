@@ -596,12 +596,13 @@ def get_app_subscriptions_site_config(
 	for s in subscriptions:
 		site_config.update({"sk_" + s.document_name: s.secret_key})
 
-	if trial_end_date and subscriptions:
+	if trial_end_date:
 		app_include_script = frappe.db.get_single_value("Press Settings", "app_include_script")
+		secret_key = subscriptions[0].secret_key if subscriptions else frappe.generate_hash(length=40)
 		site_config.update(
 			{
 				"subscription": {
-					"secret_key": subscriptions[0].secret_key,
+					"secret_key": secret_key,
 					"trial_end_date": trial_end_date.strftime("%Y-%m-%d"),
 				},
 			}

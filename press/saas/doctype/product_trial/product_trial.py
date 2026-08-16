@@ -127,9 +127,7 @@ class ProductTrial(Document):
 				site.team = team
 				site.trial_end_date = trial_end_date
 				site.account_request = account_request
-				apps_site_config = get_app_subscriptions_site_config(
-					[d.app for d in self.apps], standby_site, trial_end_date
-				)
+				apps_site_config = get_app_subscriptions_site_config([d.app for d in self.apps], standby_site)
 				site._update_configuration(apps_site_config, save=False)
 				site._update_configuration(get_plan_config(plan), save=False)
 				site.signup_time = frappe.utils.now()
@@ -174,9 +172,7 @@ class ProductTrial(Document):
 				trial_end_date=trial_end_date,
 				signup_time=frappe.utils.now(),
 			)
-			apps_site_config = get_app_subscriptions_site_config(
-				[d.app for d in self.apps], site.name, trial_end_date
-			)
+			apps_site_config = get_app_subscriptions_site_config([d.app for d in self.apps], site.name)
 			site._update_configuration(apps_site_config, save=False)
 			site._update_configuration(get_plan_config(plan), save=False)
 			site.generate_saas_communication_secret(create_agent_job=False, save=False)
@@ -580,9 +576,7 @@ def create_free_app_subscription(app: str, site: str | None = None):
 	).insert(ignore_permissions=True)
 
 
-def get_app_subscriptions_site_config(
-	apps: list[str], site: str | None = None, trial_end_date=None
-) -> dict:
+def get_app_subscriptions_site_config(apps: list[str], site: str | None = None) -> dict:
 	subscriptions = []
 	site_config: dict[str, Any] = {}
 
@@ -595,20 +589,6 @@ def get_app_subscriptions_site_config(
 		site_config.update(config)
 	for s in subscriptions:
 		site_config.update({"sk_" + s.document_name: s.secret_key})
-
-	if trial_end_date:
-		app_include_script = frappe.db.get_single_value("Press Settings", "app_include_script")
-		secret_key = subscriptions[0].secret_key if subscriptions else frappe.generate_hash(length=40)
-		site_config.update(
-			{
-				"subscription": {
-					"secret_key": secret_key,
-					"trial_end_date": trial_end_date.strftime("%Y-%m-%d"),
-				},
-			}
-		)
-		if app_include_script:
-			site_config["app_include_js"] = [app_include_script]
 
 	return site_config
 

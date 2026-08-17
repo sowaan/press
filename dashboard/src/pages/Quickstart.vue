@@ -158,7 +158,7 @@ onMounted(() => {
 			class="w-full mt-3 capitalize"
 			:route="{ name: 'SignupSetup', params: { productId: product } }"
 		>
-			Start Frappe
+			Start
 			{{ productTrial.data?.product_trial?.title || product }}
 			Trial
 		</Button>
@@ -173,7 +173,7 @@ onMounted(() => {
 		>
 			<a
 				class="hover:text-ink-gray-8"
-				href="https://frappe.io/contact-us"
+				href="https://www.sowaanerp.com/contact/"
 				target="_blank"
 			>
 				Contact us
@@ -181,8 +181,7 @@ onMounted(() => {
 			<span>·</span>
 			<a
 				class="hover:text-ink-gray-8"
-				href="https://support.frappe.io/helpdesk/my-tickets/new"
-				target="_blank"
+				href="mailto:support@sowaan.com"
 			>
 				Support
 			</a>

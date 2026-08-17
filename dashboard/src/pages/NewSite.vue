@@ -814,11 +814,7 @@ export default {
 			let apps = []
 
 			if (!this.bench)
-				apps = (this.options?.app_source_details || []).sort((a, b) =>
-					a.total_installs !== b.total_installs
-						? b.total_installs - a.total_installs
-						: a.app.localeCompare(b.app),
-				)
+				apps = [...(this.options?.app_source_details || [])]
 			else if (!this.selectedVersion?.group?.bench_app_sources) apps = []
 			else
 				apps = this.selectedVersion.group.bench_app_sources.map(
@@ -846,7 +842,7 @@ export default {
 				} else if (a.total_installs < b.total_installs) {
 					return 1
 				} else {
-					return a.app_title.localeCompare(b.app_title)
+					return (a.app_title || a.app).localeCompare(b.app_title || b.app)
 				}
 			})
 		},

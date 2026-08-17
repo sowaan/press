@@ -73,8 +73,6 @@ export default {
 
 			if (!publicApps.length) return;
 
-			this.apps = this.availableApps.filter((app) => app.preinstalled === true);
-
 			return {
 				data: () => publicApps,
 				columns: [
@@ -198,6 +196,14 @@ export default {
 					},
 				],
 			};
+		},
+	},
+	watch: {
+		availableApps: {
+			immediate: true,
+			handler(newApps) {
+				this.apps = (newApps || []).filter((app) => app.preinstalled === true);
+			},
 		},
 	},
 	methods: {

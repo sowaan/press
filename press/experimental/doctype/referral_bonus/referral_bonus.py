@@ -36,13 +36,18 @@ class ReferralBonus(Document):
 def team_has_spent(team, usd_amount=25.0, inr_amount=1800.0):
 	"""Has the team spent atleast the given amount yet (on stripe)"""
 	team_currency = frappe.db.get_value("Team", team, "currency")
-	total_paid = sum(
-		frappe.db.get_all(
-			"Invoice",
-			filters={"team": team, "status": "Paid", "transaction_amount": (">", 0)},
-			pluck="transaction_amount",
-		)
+
+	# `transaction_amount` is only populated for Subscription/Service invoices,
+	# via Invoice.update_transaction_details() reading Stripe's balance transaction.
+	# Prepaid Credits invoices skip finalize_invoice() entirely (see its early
+	# `if self.type == "Prepaid Credits": return`), so transaction_amount stays 0
+	# for them no matter how much was actually paid - fall back to amount_paid.
+	paid_invoices = frappe.get_all(
+		"Invoice",
+		filters={"team": team, "status": "Paid"},
+		fields=["transaction_amount", "amount_paid"],
 	)
+	total_paid = sum((inv.transaction_amount or inv.amount_paid or 0) for inv in paid_invoices)
 
 	if team_currency == "INR":
 		return total_paid >= inr_amount

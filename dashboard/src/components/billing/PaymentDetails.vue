@@ -311,26 +311,6 @@ const paymentModeOptions = [
 				onClick: () => updatePaymentMode('UPI Autopay'),
 			}),
 	},
-	{
-		component: () =>
-			h('div', [
-				h('div', { class: 'border-t border-outline-gray-1 my-1' }),
-				h(DropdownItem, null, {
-					default: () =>
-						h('div', { class: 'flex gap-2' }, [
-							h(
-								'a',
-								{
-									href: 'https://frappecloud.com/payment-options',
-									target: '_blank',
-								},
-								'Alternate Payment Methods',
-							),
-							h(FeatherIcon, { name: 'external-link', class: 'h-4' }),
-						]),
-				}),
-			]),
-	},
 ];
 
 const paymentMode = computed(() => {

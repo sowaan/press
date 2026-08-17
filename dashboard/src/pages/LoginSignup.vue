@@ -299,12 +299,9 @@
 								<span class="text-ink-gray-6">
 									{{ 'By signing up, you agree to our ' }}
 								</span>
-								<a
-									class="text-ink-gray-9 underline hover:text-ink-gray-7"
-									href="https://frappecloud.com/policies"
-								>
+								<span class="text-ink-gray-9">
 									Terms & Policies
-								</a>
+								</span>
 							</div>
 							<div class="mt-2" v-if="!(otpRequested || resetPasswordEmailSent)">
 								<span class="text-p-base text-ink-gray-6">
@@ -382,12 +379,9 @@
 								<span class="text-base font-normal text-ink-gray-6">
 									{{ 'By signing up, you agree to our ' }}
 								</span>
-								<a
-									class="text-base font-normal text-ink-gray-9 underline hover:text-ink-gray-7"
-									href="https://frappecloud.com/policies"
-								>
+								<span class="text-base font-normal text-ink-gray-9">
 									Terms & Policies
-								</a>
+								</span>
 							</div>
 							<div>
 								<span class="text-base font-normal text-ink-gray-6">
@@ -492,7 +486,7 @@ export default {
 							You are not part of an active team<br/>
 							<span class="text-sm text-ink-gray-8">
 								If the issue persists, please contact
-								<a href="https://support.frappe.io" class="font-medium underline" target="_blank" rel="noopener noreferrer">
+								<a href="https://www.sowaanerp.com/contact" target="_blank" class="font-medium underline">
 									support.
 								</a>
 							</span>

@@ -60,12 +60,6 @@
 								is public to proceed.
 							</span>
 						</div>
-						<Link
-							href="https://frappecloud.com/marketplace/terms"
-							class="font-medium text-blue-600 hover:underline"
-						>
-							Read our Terms and Policy
-						</Link>
 					</div>
 				</div>
 			</div>

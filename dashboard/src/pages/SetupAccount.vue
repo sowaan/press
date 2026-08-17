@@ -131,12 +131,9 @@
 					<span class="text-base font-normal text-ink-gray-6">
 						{{ 'By signing up, you agree to our ' }}
 					</span>
-					<a
-						class="text-base font-normal text-ink-gray-9 underline hover:text-ink-gray-7"
-						href="https://frappecloud.com/policies"
-					>
+					<span class="text-base font-normal text-ink-gray-9">
 						Terms & Policies
-					</a>
+					</span>
 				</div>
 			</LoginBox>
 		</div>

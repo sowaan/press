@@ -876,7 +876,7 @@ export default {
 										label: 'Contact Support',
 										variant: 'outline',
 										onClick() {
-											window.open('https://frappecloud.com/support', '_blank')
+											window.open('https://www.sowaanerp.com/contact', '_blank')
 										},
 									},
 								}
@@ -886,7 +886,7 @@ export default {
 
 						return getUpsellBanner(
 							site,
-							'Your site is currently on a shared bench. Upgrade plan for offsite backups and <a href="https://frappecloud.com/shared-hosting#benches" class="underline" target="_blank">more</a>.',
+							'Your site is currently on a shared bench. Upgrade plan for offsite backups and more.',
 						)
 					},
 				},
@@ -1399,7 +1399,7 @@ export default {
 							return { title: message, type: 'warning' }
 						}
 						const bannerTitle =
-							'Your site is currently on a shared bench. Upgrade to a private bench to configure auto updates and <a href="https://frappecloud.com/shared-hosting#benches" class="underline" target="_blank">more</a>.'
+							'Your site is currently on a shared bench. Upgrade to a private bench to configure auto updates and more.'
 						return getUpsellBanner(site, bannerTitle)
 					},
 				},

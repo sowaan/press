@@ -48,20 +48,11 @@
 									v-model="terms_accepted"
 									class="mr-0.5 py-1 align-baseline"
 								/>
-								I agree to Frappe&nbsp;
-								<Link href="https://frappecloud.com/terms" target="_blank">
-									Terms of Service </Link
-								>,&nbsp;
-								<Link href="https://frappecloud.com/privacy" target="_blank">
-									Privacy Policy
-								</Link>
+								I agree to Sowaan Cloud's&nbsp;
+								Terms of Service,&nbsp;
+								Privacy Policy
 								&nbsp;&&nbsp;
-								<Link
-									href="https://frappecloud.com/cookie-policy"
-									target="_blank"
-								>
-									Cookie Policy
-								</Link>
+								Cookie Policy
 							</label>
 						</div>
 						<!-- Error Message -->

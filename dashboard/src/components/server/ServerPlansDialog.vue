@@ -247,7 +247,7 @@ export default {
 						background jobs on this server may run slower or fail under load.
 						If you're not sure the smaller plan can handle this server's
 						workload, reach out at
-						<a href="https://support.frappe.io" target="_blank" class="underline">support.frappe.io</a>
+						<a href="https://www.sowaanerp.com/contact" target="_blank" class="underline">our support team</a>
 						before downgrading.
 					`,
 					primaryAction: {

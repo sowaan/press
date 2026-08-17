@@ -18,7 +18,7 @@
 		<LucideAlertTriangle class="mx-auto mb-4 h-6 w-6 text-red-600" />
 		<p>
 			Your spending limit has been exceeded. Please
-			<a href="https://support.frappe.io" target="_blank">contact support</a>
+			<a href="https://www.sowaanerp.com/contact" target="_blank">contact support</a>
 			to increase your limit.
 		</p>
 	</div>
@@ -244,14 +244,6 @@
 					<h2 class="text-base font-medium leading-6 text-ink-gray-9">
 						Select Plan
 					</h2>
-					<div>
-						<Button link="https://frappecloud.com/pricing" variant="ghost">
-							<template #prefix>
-								<lucide-help-circle class="h-4 w-4 text-ink-gray-7" />
-							</template>
-							Help
-						</Button>
-					</div>
 				</div>
 				<div class="mt-2">
 					<SitePlansCards

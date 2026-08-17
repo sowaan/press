@@ -5,7 +5,7 @@
 		</p>
 		<p class="text-base text-ink-gray-7">
 			Please reach out to
-			<a href="https://support.frappe.io/" target="_blank" class="underline"
+			<a href="https://www.sowaanerp.com/contact" target="_blank" class="underline"
 				>support</a
 			>
 			to enable it

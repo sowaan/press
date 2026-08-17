@@ -160,9 +160,8 @@
 								<li>
 									Need a higher limit immediately? Reach out to
 									<a
-										href="https://support.frappe.io"
+										href="https://www.sowaanerp.com/contact"
 										target="_blank"
-										rel="noopener noreferrer"
 										class="text-ink-blue-3 underline underline-offset-2 hover:text-ink-blue-4"
 									>
 										support

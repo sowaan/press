@@ -25,7 +25,7 @@
 		<LucideAlertTriangle class="mx-auto mb-4 h-6 w-6 text-red-600" />
 		<p>
 			Your spending limit has been exceeded. Please
-			<a href="https://support.frappe.io" target="_blank">contact support</a> to
+			<a href="https://www.sowaanerp.com/contact" target="_blank">contact support</a> to
 			increase your limit.
 		</p>
 	</div>
@@ -240,18 +240,6 @@
 							<h2 class="text-base font-semibold leading-6 text-ink-gray-9">
 								Service Type
 							</h2>
-							<div>
-								<Button
-									link="https://frappecloud.com/pricing#dedicated"
-									variant="ghost"
-								>
-									<template #prefix>
-										<lucide-help-circle class="h-4 w-4 text-ink-gray-7" />
-									</template>
-									<span class="hidden sm:inline">Know More</span>
-									<span class="sm:hidden">More</span>
-								</Button>
-							</div>
 						</div>
 						<div class="mt-2 w-full space-y-2">
 							<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -980,7 +968,7 @@
 			Or you can
 			<a
 				class="underline"
-				href="https://frappecloud.com/support"
+				href="https://www.sowaanerp.com/contact"
 				target="_blank"
 				>contact support</a
 			>

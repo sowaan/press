@@ -181,7 +181,8 @@ onMounted(() => {
 			<span>·</span>
 			<a
 				class="hover:text-ink-gray-8"
-				href="mailto:support@sowaan.com"
+				href="https://www.sowaanerp.com/contact"
+				target="_blank"
 			>
 				Support
 			</a>

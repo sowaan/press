@@ -136,18 +136,6 @@ const list = computed(() => {
 		},
 
 		{
-			name: 'Marketplace',
-			icon: LucideLayoutGrid,
-			route: '/apps',
-			isActive: routeName.startsWith('Marketplace'),
-			css: '-mt-1',
-			condition:
-				$team.doc?.is_desk_user ||
-				(!!$team.doc.is_developer && $session.hasAppsAccess),
-			disabled: enforce2FA,
-		},
-
-		{
 			name: 'Billing',
 			icon: LucideWalletCards,
 			route: '/billing',

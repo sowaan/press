@@ -145,6 +145,7 @@ class SiteUpdate(Document):
 			self.validate_destination_bench(differences)
 			self.validate_deploy_candidate_difference(differences)
 		else:
+			self.validate_private_bench_plan_eligibility()
 			self.validate_destination_bench([])
 			# Forcefully migrate since we can't compute deploy_type reasonably
 			self.deploy_type = "Migrate"
@@ -155,6 +156,17 @@ class SiteUpdate(Document):
 		self.set_physical_backup_mode_if_eligible()
 		self.set_logical_replication_backup_mode_if_eligible()
 		self.validate_backup_type_for_large_database()
+
+	def validate_private_bench_plan_eligibility(self):
+		if frappe.db.get_value("Release Group", self.destination_group, "public"):
+			return
+		plan = frappe.db.get_value("Site", self.site, "plan")
+		if plan and frappe.db.get_value("Site Plan", plan, "private_bench_support"):
+			return
+		frappe.throw(
+			"Your current plan does not support private benches. Please upgrade to a plan that "
+			"supports private benches before moving this site."
+		)
 
 	def validate_destination_bench(self, differences):
 		if not self.destination_bench:

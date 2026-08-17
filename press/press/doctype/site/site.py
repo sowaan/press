@@ -1619,7 +1619,8 @@ class Site(Document, TagHelpers):
 
 	@frappe.whitelist()
 	def move_to_group(self, group, skip_failing_patches=False, skip_backups=False):
-		self.validate_private_bench_plan_eligibility(group)
+		# Note: eligibility is enforced in SiteUpdate.validate() since Site Update
+		# docs can also be created directly (e.g. press.api.version_upgrade), bypassing this method.
 		log_site_activity(self.name, "Update")
 
 		return frappe.get_doc(

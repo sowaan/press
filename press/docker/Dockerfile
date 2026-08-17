@@ -249,7 +249,7 @@ RUN --mount=type=cache,target=/home/frappe/.cache,uid=1000,gid=1000 \
   `#stage-pre-Configure Asset Store`
 
 # Install Frappe app
-RUN --mount=type=cache,sharing=locked,target=/home/frappe/.cache,uid=1000,gid=1000 --mount=type=bind,source=apps/frappe,target=/home/frappe/context/apps/frappe bench init --python /usr/bin/python${PYTHON_VERSION} --no-backups --frappe-path file:///home/frappe/context/apps/frappe frappe-bench `#stage-apps-frappe`
+RUN --mount=type=cache,sharing=locked,target=/home/frappe/.cache,uid=1000,gid=1000 --mount=type=bind,source=apps/frappe,target=/home/frappe/context/apps/frappe --mount=type=secret,id=github_token,mode=0444 bash -c 'trap "rm -f $HOME/.netrc" EXIT; if [ -s /run/secrets/github_token ]; then GH_TOKEN=$(cat /run/secrets/github_token); printf "machine github.com\nlogin x-access-token\npassword %s\nmachine codeload.github.com\nlogin x-access-token\npassword %s\n" "$GH_TOKEN" "$GH_TOKEN" > $HOME/.netrc; chmod 600 $HOME/.netrc; fi; bench init --python /usr/bin/python${PYTHON_VERSION} --no-backups --frappe-path file:///home/frappe/context/apps/frappe frappe-bench' `#stage-apps-frappe`
 WORKDIR /home/frappe/frappe-bench
 
 RUN --mount=type=cache,target=/home/frappe/.cache,uid=1000,gid=1000 /home/frappe/frappe-bench/env/bin/pip install pycups==2.0.1

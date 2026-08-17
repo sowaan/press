@@ -1607,8 +1607,19 @@ class Site(Document, TagHelpers):
 		assert doc is not None, "Invalid migration plan type"
 		return doc.name
 
+	def validate_private_bench_plan_eligibility(self, group):
+		if frappe.db.get_value("Release Group", group, "public"):
+			return
+		if self.plan and frappe.db.get_value("Site Plan", self.plan, "private_bench_support"):
+			return
+		frappe.throw(
+			"Your current plan does not support private benches. Please upgrade to a plan that "
+			"supports private benches before moving this site."
+		)
+
 	@frappe.whitelist()
 	def move_to_group(self, group, skip_failing_patches=False, skip_backups=False):
+		self.validate_private_bench_plan_eligibility(group)
 		log_site_activity(self.name, "Update")
 
 		return frappe.get_doc(
@@ -1631,6 +1642,9 @@ class Site(Document, TagHelpers):
 			frappe.throw(
 				"Site is already on the selected bench. Please select another bench if you want to move the site to another bench."
 			)
+
+		destination_group = frappe.db.get_value("Bench", bench, "group")
+		self.validate_private_bench_plan_eligibility(destination_group)
 
 		agent = Agent(self.server)
 		job = agent.move_site_to_bench(self, bench, deactivate, skip_failing_patches)

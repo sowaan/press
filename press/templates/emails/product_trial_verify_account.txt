@@ -11,6 +11,6 @@ Verification Code: {{ otp }}
 Verification Link: {{ link }}
 {% endif %}
 
-Team Frappe
+Team Sowaan Cloud
 
 This email was sent by Sowaan Cloud

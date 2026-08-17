@@ -7,13 +7,9 @@ import { getTeam } from '@/data/team'
 import { mobileNav, partnerRegistrationModalOpen } from '@/data/ui'
 import { isMobile } from '@/utils/device'
 import { setTheme } from '@/utils/useTheme'
-import LucideBookText from '~icons/lucide/book-text'
 import LucideChevronDown from '~icons/lucide/chevron-down'
 import LucideGlobe from '~icons/lucide/globe'
-import LucideSupport from '~icons/lucide/life-buoy'
-import LucideMessageSquareCode from '~icons/lucide/message-square-code'
 import LucideMoon from '~icons/lucide/moon'
-import LucideAlert from '~icons/lucide/notebook-text'
 import AttentionWidget from './AttentionWidget.vue'
 import DarkModeLabel from './DarkModeLabel.vue'
 import Item from './Item.vue'
@@ -55,25 +51,6 @@ const SwitchTeamDialog2 = defineAsyncComponent(
 	() => import('../../SwitchTeamDialog.vue'),
 )
 
-const support = () => {
-	window.open('https://support.frappe.io/helpdesk/my-tickets/new', '_blank')
-}
-const docs = () => {
-	window.open('https://docs.frappe.io/cloud', '_blank')
-}
-
-const feedback = () => {
-	window.open('https://frappecloud.com/frappe-cloud-feedback/new', '_blank')
-}
-
-const releaseNotes = () => {
-	window.open('https://github.com/frappe/press/releases/', '_blank')
-}
-
-const findPartner = () => {
-	window.open('https://frappe.io/partners/regions', '_blank')
-}
-
 watch(router.currentRoute, () => {
 	if (isMobile() && mobileNav.value) mobileNav.value = false
 })
@@ -108,13 +85,6 @@ const userDropdownOptions = [
 	{ label: 'Logout', icon: 'log-out', onClick: $session.logout.submit },
 ]
 
-const helpDropdownOptions = [
-	{ label: 'Docs', icon: LucideBookText, onClick: docs },
-	{ label: 'Get Support', icon: LucideSupport, onClick: support },
-	{ label: 'Share Feedback', icon: LucideMessageSquareCode, onClick: feedback },
-	{ label: 'Find a Partner', icon: LucideGlobe, onClick: findPartner },
-	{ label: 'Release Notes', icon: LucideAlert, onClick: releaseNotes },
-]
 </script>
 
 <template>
@@ -194,18 +164,6 @@ const helpDropdownOptions = [
 				:class='collapsed ? "flex-col" : "flex-row"'
 				class="flex gap-1 justify-between items-center"
 			>
-				<Dropdown :options="helpDropdownOptions">
-					<Button variant="ghost">
-						<template #prefix v-if="!collapsed">
-							<LucideCircleQuestionMark class="size-4" />
-						</template>
-
-						<LucideCircleQuestionMark v-if="collapsed" class="size-4" />
-
-						<template v-if="!collapsed">Help</template>
-					</Button>
-				</Dropdown>
-
 				<Button
 					variant="ghost"
 					class="hidden md:flex"

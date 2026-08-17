@@ -4414,6 +4414,17 @@ class Site(Document, TagHelpers):
 			grp for grp in compatible_release_groups_for_migration if grp["servers"]
 		]
 
+		# All groups returned above are private (public == 0). If this site's plan
+		# doesn't support private benches, only allow staying within the current
+		# group (e.g. moving to a different server) - drop every other private group.
+		plan_supports_private_benches = bool(
+			self.plan and frappe.db.get_value("Site Plan", self.plan, "private_bench_support")
+		)
+		if not plan_supports_private_benches:
+			compatible_release_groups_for_migration = [
+				grp for grp in compatible_release_groups_for_migration if grp["name"] == self.group
+			]
+
 		cluster_names = release_group.get_clusters()
 		group_regions = frappe.get_all(
 			"Cluster", filters={"name": ("in", cluster_names)}, fields=["name", "title", "image"]

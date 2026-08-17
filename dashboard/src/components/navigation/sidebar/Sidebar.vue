@@ -4,11 +4,10 @@ import { computed, defineAsyncComponent, provide, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { session } from '@/data/session'
 import { getTeam } from '@/data/team'
-import { mobileNav, partnerRegistrationModalOpen } from '@/data/ui'
+import { mobileNav } from '@/data/ui'
 import { isMobile } from '@/utils/device'
 import { setTheme } from '@/utils/useTheme'
 import LucideChevronDown from '~icons/lucide/chevron-down'
-import LucideGlobe from '~icons/lucide/globe'
 import LucideMoon from '~icons/lucide/moon'
 import AttentionWidget from './AttentionWidget.vue'
 import DarkModeLabel from './DarkModeLabel.vue'
@@ -22,17 +21,6 @@ const router = useRouter()
 
 const showTeamSwitcher = ref(false)
 const collapsed = ref(localStorage.collapsed === 'true')
-
-const activePartner = computed(() =>
-	Boolean(
-		$team?.doc?.erpnext_partner && $team?.doc?.partner_status === 'Active',
-	),
-)
-// Once an onboarding record exists (or they are an active partner) the
-// "Partnership" item appears in the sidebar instead — see NavList.vue.
-const canBecomePartner = computed(
-	() => !activePartner.value && !$team?.doc?.has_partner_onboarding,
-)
 
 const collapsedCss = computed(() =>
 	collapsed.value
@@ -73,13 +61,6 @@ const userDropdownOptions = [
 			// so make the icon itself icon+label+beta badge
 			{ icon: DarkModeLabel, onClick: () => setTheme('dark') },
 		],
-	},
-
-	{
-		label: 'Become a Partner',
-		icon: LucideGlobe,
-		condition: () => canBecomePartner.value,
-		onClick: () => (partnerRegistrationModalOpen.value = true),
 	},
 
 	{ label: 'Logout', icon: 'log-out', onClick: $session.logout.submit },

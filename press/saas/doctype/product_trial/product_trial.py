@@ -590,6 +590,13 @@ def get_app_subscriptions_site_config(apps: list[str], site: str | None = None) 
 	for s in subscriptions:
 		site_config.update({"sk_" + s.document_name: s.secret_key})
 
+	# frappe core's native trial banner (billing.bundle.js) never renders on a
+	# Workspace-based home page (it anchors to `.icons-container`, which only
+	# exists on the legacy desktop-icons page). This script supplements it for
+	# that case only, deferring to native everywhere else.
+	if app_include_script := frappe.db.get_single_value("Press Settings", "app_include_script"):
+		site_config["app_include_js"] = [app_include_script]
+
 	return site_config
 
 

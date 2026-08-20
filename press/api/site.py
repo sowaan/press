@@ -395,6 +395,7 @@ def validate_plan(server: str, site: str, new_plan: str, is_new: bool = False) -
 			"dedicated_server_plan",
 			"restrict_based_on_dedicated_server_plan",
 			"minimum_server_price_usd",
+			"is_trial_plan",
 		],
 		as_dict=True,
 	)
@@ -412,6 +413,9 @@ def validate_plan(server: str, site: str, new_plan: str, is_new: bool = False) -
 	)
 
 	if new_site_plan.get("price_usd", 0) > 0:
+		return
+
+	if new_site_plan.get("is_trial_plan"):
 		return
 
 	if _is_free_dedicated_plan_allowed(server, new_site_plan):

@@ -88,6 +88,7 @@
 								:countries="countries"
 								:country="country"
 								placeholder="9876543210"
+								required
 							/>
 						</div>
 						<ErrorMessage

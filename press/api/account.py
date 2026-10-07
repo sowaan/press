@@ -225,6 +225,9 @@ def setup_account(  # noqa: C901
 		if not is_invitation and not country:
 			frappe.throw("Country is required")
 
+		if not is_invitation and not phone:
+			frappe.throw("Phone number is required")
+
 		if not is_invitation and country:
 			all_countries = frappe.db.get_all("Country", pluck="name")
 			country = find(all_countries, lambda x: x.lower() == country.lower())

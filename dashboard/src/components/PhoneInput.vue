@@ -66,6 +66,7 @@
 				type="tel"
 				v-model="phoneNumber"
 				:placeholder="selectedCountry?.example || placeholder"
+				:required="required"
 				class="h-full w-full border-0 bg-transparent px-2 text-base text-ink-gray-8 placeholder-gray-500 focus:outline-none focus:ring-0"
 				@input="emitValue"
 			/>
@@ -98,6 +99,10 @@ const props = defineProps({
 	country: {
 		type: String,
 		default: '',
+	},
+	required: {
+		type: Boolean,
+		default: false,
 	},
 })
 
